@@ -1,0 +1,20 @@
+{
+  "contrat": [
+    {
+      "id": 1,
+      "DateDebutContrat": "2011-02-11",
+      "DateFinContrat": "2021-02-09",
+      "specialite": "IA",
+      "archive": "true",
+      "montantContrat": 2
+    },
+    {
+      "DateDebutContrat": "2022-11-03",
+      "DateFinContrat": "2022-11-12",
+      "specialite": "CLOUD",
+      "archive": "false",
+      "montantContrat": "411",
+      "id": 5
+    }
+  ]
+}

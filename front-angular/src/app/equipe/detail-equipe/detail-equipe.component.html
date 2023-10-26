@@ -1,0 +1,97 @@
+<div class="container row mt-3">
+    <h1>Detail Equipe</h1>
+    <div class="col-7">
+     <!-- Info -->
+     <div class="card mb-4">
+        <div class="card-body">
+
+            <div class="user-heading round">
+                
+                <h2 style="margin-bottom:0">{{equipe.nomEquipe}}</h2>
+                <span style="margin-top: 0;" class="text-muted">{{equipe.niveau}}</span>
+            </div>
+
+          <hr>
+
+         
+
+          <h6 class="my-3">Details</h6>
+
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Salle :</div>
+            <div class="col-md-9">
+              {{detailEquipe.salle}}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Thematique:</div>
+            <div class="col-md-9">
+                {{detailEquipe.thematique}}
+            </div>
+            <div class="mb-0 mt-4 offset-6" >
+                <button class="btn btn-warning m-2" [routerLink]="['/equipes/editEquipe',equipe.idEquipe]">Modifier</button>
+                <button class="btn btn-danger m-2" >Supprimer</button>
+            </div>
+            
+          </div>
+
+          <!-- <h6 class="my-3">Les Options</h6>
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Option:</div>
+            <div class="col-md-9">
+              <a href="javascript:void(0)" class="text-body">GAMIX</a>,
+              <a href="javascript:void(0)" class="text-body">SE</a>,
+             
+              <a href="javascript:void(0)" class="text-body">TWIN</a>,
+              <a href="javascript:void(0)" class="text-body">SIMS</a>
+            </div>
+          </div> -->
+
+         
+
+        </div>
+        <div class="card-footer text-center p-0">
+          <div class="row no-gutters row-bordered row-border-light">
+            <a href="javascript:void(0)" class="d-flex col flex-column text-body py-3">
+              <div class="font-weight-bold">{{equipe.etudiants.length}}</div>
+              <div class="text-muted small">Membres</div>
+            </a>
+            <a href="javascript:void(0)" class="d-flex col flex-column text-body py-3">
+              <div class="font-weight-bold">8</div>
+              <div class="text-muted small">Contrats</div>
+            </a>
+           
+          </div>
+        </div>
+      </div>
+      <!-- / Info -->
+    </div>
+    <div class="row bootstrap snippets bootdeys col-4">
+        <div class="container-widget p-3">
+            <div class="panel panel-info panel-widget">
+                <div class="panel-title text-center">
+                  Membres d'equipe
+                </div>
+                <div class="panel-body p-3">
+                  <ul class="basic-list image-list" *ngIf="equipe.etudiants.length > 0 " >
+                    <li *ngFor="let et of equipe.etudiants" ><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="img" class="img" style="border-radius: 100%;">
+                      <div class="d-flex  align-items-center ">
+                      <div class="w-80"><p>{{et.nomE}} {{et.prenomE}}</p>
+                      <span class="desc">{{et.opt}}</span> </div>
+                      <div> <i class="fa-solid fa-square-minus text-danger del" ></i></div>
+                      
+                    </div>
+
+                 </li>
+
+                  </ul>
+                  <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="equipe.etudiants.length == 0">
+                      <p>Equipe Vide</p>
+                  </div>
+                </div>
+                <div class="panel-title p-2 text-center">
+                <button class="btn btn-primary mb-0" [routerLink]="['/equipes/equipeMember',equipe.idEquipe]">Ajouter Membre</button>
+                </div>
+            </div>
+        </div>  
+</div>

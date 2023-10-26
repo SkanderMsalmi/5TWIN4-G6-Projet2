@@ -1,0 +1,113 @@
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+            
+
+                <div class="col-6 d-flex align-items-center">
+                    <h4 class="mb-0">{{action}} Department</h4>
+                </div>
+
+
+            <div class="p-4">
+                
+                <form role="form">
+                    <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-4">
+                          <label class="form-label">Name of Departement :</label>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="input-group input-group-dynamic  mb-4">
+                          <input type="text" name="name"  [(ngModel)]="departement.nomDepart" class="form-control"  placeholder="Name of Departement">
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Internal Code :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="code" class="form-control"  [(ngModel)]="departement.codeInterne" placeholder="Internal Code">
+                            </div>
+                        </div>
+                     </div>
+
+
+
+
+
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Head of Department :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="chefDepart" class="form-control" [(ngModel)]="departement.chefDepart"  placeholder="Head of Department">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                      <div class="col-md-3">
+                          <div class="mb-4">
+                            <label class="form-label">Bloc :</label>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="input-group input-group-static mb-4">
+                            <select  name="bloc" class="form-control" [(ngModel)]="departement.bloc" id="bloc">
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
+                              <option value="E">E</option>
+                              <option value="F">F</option>
+                              <option value="G">G</option>
+                            </select>
+                          </div>
+                      </div>
+                   </div>
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Email :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="email" class="form-control" [(ngModel)]="departement.emailDepart"  placeholder="Email">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+               
+                      <div class="text-center">
+                          <button (click)="saveDep()" type="button"
+                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">{{action}}</button>
+                      </div>  
+                   </div>
+                 
+                </form>
+              </div>
+              
+        </div>
+     
+
+
+
+</div>
+

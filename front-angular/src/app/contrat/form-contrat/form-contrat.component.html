@@ -1,0 +1,44 @@
+<h1>add a new Contrat</h1>
+<form  #f="ngForm">
+    <div class="form-group col-md-6">
+        <label for="name">Date de debut du contrat:</label>
+        <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="name">Date de Fin du contrat:</label>
+        <input type="date" class="form-control" id="DateFin" name="dateFinContrat"  [(ngModel)]="contrat.dateFinContrat" >
+    </div>
+<div class="form-group col-md-6">
+    <label for="specialite">specialité:</label>
+ <select name="specialite" id="specialite"  [(ngModel)]="contrat.specialite" class="form-control">
+  <option value="IA">IA</option>
+  <option value="RESEAUX">RESEAUX</option>
+  <option value="CLOUD">CLOUD</option>
+  <option value="SECURITE">SECURITE</option>
+ </select>
+</div>
+
+    <fieldset class="form-control" id="radio"  >
+        <legend>archive</legend>
+        <div>
+          <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive">
+          
+          <label for="name">Oui</label>
+        </div>
+        <div>
+          <input type="radio" [value]="false" id="false" name="radio"  [(ngModel)]="contrat.archive">
+          
+          <label for="name">Non</label>
+        </div>
+        
+    </fieldset>
+    
+    
+   
+    <div class="form-group col-md-6">
+        <label for="description">montant du Contrat</label>
+        <input type="text"  name="montantContrat" [(ngModel)]="contrat.montantContrat" class="form-control" >
+        
+    </div>
+    <button class="btn btn-sm btn-success" (click)="saveContrat()">save</button>
+</form>
