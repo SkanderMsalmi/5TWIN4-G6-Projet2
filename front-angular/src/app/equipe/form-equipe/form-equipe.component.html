@@ -1,0 +1,33 @@
+<div class="d-flex flex-column m-auto justify-content-center align-items-center mt-5 border" >
+
+    <form #f="ngForm" class="w-50" >
+        <h2>{{action}} Equipe</h2>
+        <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control border p-2" placeholder="Nom d'equipe "  pattern="[A-Za-z]{3,12}$" required="true" [(ngModel)]="equip.nomEquipe">
+      
+        </div>
+      
+        
+        <div class="form-label col-md-6">
+            <label class="form-label" for="niveau">Niveau</label>
+            <select class="form-select border p-2" name="niveau" id="niveau"  required="true" [(ngModel)]="equip.niveau">
+                <option value="EXPERT">EXPERT</option>
+                <option value="SENIOR">SENIOR</option>
+                <option value="JUNIOR">JUNIOR</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="salle">Salle</label>
+            <input type="number" name="salle" class="form-control border p-2" placeholder="Salle"  pattern="[A-Za-z]{3,12}$" required="true" [(ngModel)]="equip.detailEquipe.salle">
+      
+        </div>
+        <div class="form-group col-md-6">
+            <label for="thematique">Thematique</label>
+            <input type="text" name="thematique" class="form-control border p-2" placeholder="Thematique" pattern="[A-Za-z]{3,12}$" required="true" [(ngModel)]="equip.detailEquipe.thematique">
+      
+        </div>
+        
+        <button class="btn btn-success mt-3 p-3" (click)="saveEquip()" >{{action}}</button>
+    </form>
+    </div>
