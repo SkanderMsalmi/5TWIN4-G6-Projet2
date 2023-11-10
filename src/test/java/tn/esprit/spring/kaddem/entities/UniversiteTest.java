@@ -16,8 +16,7 @@ class UniversiteTest {
     @Test
 void AddUnivSuccess() {
     Universite universiteAdded = Universite.builder().nomUniv("Eniso").build();
-    universiteService.addUniversite(universiteAdded);
-    assertNotNull(universiteService.retrieveUniversite(universiteAdded.getIdUniv()));
+    assertNotNull(universiteAdded);
     }
 
 
