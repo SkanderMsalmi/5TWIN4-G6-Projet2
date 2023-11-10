@@ -1,6 +1,7 @@
 package tn.esprit.spring.kaddem.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -8,6 +9,12 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+@Builder
+@EqualsAndHashCode
 public class Universite implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
