@@ -14,7 +14,7 @@ services:
     networks:
       - mynetwork
   backend:
-    image: HoussemKharroubiEssayed-5TWIN4-G6-kaddem/kaddem:1.0
+    image: houssemkharroubiessayed-5twin4-g6-kaddem/kaddem:1.0
     depends_on:
       - mysqldb
     build: ./
