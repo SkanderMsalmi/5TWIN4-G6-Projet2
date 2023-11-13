@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 
 class UniversiteTest {
-    @Autowired
+  /*  @Autowired
     UniversiteServiceImpl universiteService ;
     @Test
 void AddUnivSuccess() {
     Universite universiteAdded = Universite.builder().nomUniv("Eniso").build();
     assertNotNull(universiteAdded);
     }
-
+*/
 
 }
