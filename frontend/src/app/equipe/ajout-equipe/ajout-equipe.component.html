@@ -1,0 +1,132 @@
+
+
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+            
+
+                <div class="col-6 d-flex align-items-center">
+                    <h4 class="mb-0" >Ajouter Equipe</h4>
+                </div>
+
+
+            <div class="p-4">
+                
+                <form (ngSubmit)="ajoutEquipe()" [formGroup]="form">
+                    <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-4">
+                          <label class="form-label">Nom d'equipe :</label>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="input-group input-group-outline  mb-4">
+
+                          <input type="text" name="nom"   class="form-control"   formControlName="nom" >
+                          
+                        
+                        </div>
+                        
+                        <div class="text-danger" *ngIf="nom?.errors && form.get('nom')?.touched ">
+                            <p class="text-danger" *ngIf="nom?.hasError('minlength')"> Vous devez entrer un nom au minimum 5 caracteres</p>
+                            <p class="text-danger" *ngIf="nom?.hasError('required')"> Vous devez entrer un nom </p>
+                            <p class="text-danger" *ngIf="nom?.errors?.['notUnique']"> Ce Nom exite deja</p>
+                        </div>
+                        <div class="alert alert-warning fade show" *ngIf="nom?.pending"><small>CHecking availibility ...</small></div>
+
+                      </div>
+                    </div>
+                    
+
+
+
+                    
+
+
+
+
+
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Niveau :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-outline mb-4">
+
+                              <select  name="niveau" class="form-select p-2  border"  id="niveau" formControlName="niveau" >
+                                    <option value="EXPERT">Expert</option>
+                                    <option value="SENIOR">Senior</option>
+                                    <option value="JUNIOR">Junior</option>
+                                
+                              
+                              </select>
+                              
+                            </div>
+                            <div class="text-danger" *ngIf="niveau?.errors && niveau?.touched">
+                                <p class="text-danger" *ngIf="nom?.hasError('required')"> Vous devez entrer votre niveau d'equipe </p>
+                            </div>
+                          
+                        </div>
+                     </div>
+                     
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Salle :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-outline  mb-4">
+
+                                <input type="number" name="salle" class="form-control " formControlName="salle"  >
+                                
+                            </div>
+                            <div class="text-danger mt-0" *ngIf="salle?.errors && salle?.touched">
+                                <small class="text-danger" *ngIf="salle?.hasError('required')"> Vous devez entrer votre salle d'equipe </small>
+                                <small class="text-danger" *ngIf="salle?.hasError('min')"> Vous avez mis un signe negatif ! </small>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Thematique :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-outline  mb-4">
+                               
+                              <input type="text" name="thematique" class="form-control" formControlName="thematique"  >
+                               
+                            </div>
+                            <div class="text-danger" *ngIf="thematique?.errors && thematique?.touched">
+                                <p class="text-danger" *ngIf="thematique?.hasError('required')"> Vous devez entrer votre thematique d'equipe </p>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+               
+                      <div class="text-center">
+                          <button  type="submit" [disabled]="form.invalid"
+                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">Ajouter</button>
+                      </div>  
+                   </div>
+                 
+                </form>
+              </div>
+              
+        </div>
+     
+
+
+
+</div>
+

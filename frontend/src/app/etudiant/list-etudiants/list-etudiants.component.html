@@ -1,0 +1,83 @@
+<a class="add-b fixed-plugin-button card shadow-lg  px-3 py-2 start-50" routerLink="add">+</a>
+
+<div class="container-fluid py-4">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Students table</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Student</th>
+                                    <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Option</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Department</th>
+
+
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let s of students">
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div>
+                                                <img src="{{s.image.url}}"
+                                                    class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{s.prenomE}} {{s.nomE}}</h6>
+                                                <p class="text-xs text-secondary mb-0">Student</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-sm bg-gradient-success">{{s.opt}}</span>
+
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0 edit" style="cursor: pointer;" [routerLink]="['/departements/detail',s.departement?.idDepartement]">{{s.departement?.nomDepart}}</p>
+                                        <p class="text-xs text-secondary mb-0">{{s.departement?.universite?.nomUniv}}</p>
+                                    </td>
+                                    <!-- <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0">Team</p>
+                                        <p class="text-xs text-secondary mb-0">Junior</p>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                    </td> -->
+                                    <td class="align-middle">
+                                        <a [routerLink]="['update',s.idEtudiant]"
+                                            class="text-secondary font-weight-bold text-xs edit" data-toggle="tooltip"
+                                            data-original-title="Edit user">
+                                            Edit
+                                        </a>
+                                        &nbsp;
+                                        <a (click)="delete(s)" class="text-secondary font-weight-bold text-xs delete"
+                                            data-toggle="tooltip" data-original-title="Delete user">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

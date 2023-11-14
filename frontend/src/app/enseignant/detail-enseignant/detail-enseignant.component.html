@@ -1,0 +1,114 @@
+<div class="page-header min-height-300 border-radius-xl mt-4"
+    style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+    <span class="mask  bg-gradient-primary  opacity-6"></span>
+</div>
+    <div class="card card-body mx-3 mx-md-4 mt-n2">
+      <div class="row gx-4 mb-2 ">
+        <div class="col-auto my-auto">
+          <div class="avatar avatar-xl position-relative">
+            <img src="{{enseignant.image}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+          </div>
+        </div>
+        <div class="col-auto my-auto">
+          <div class="h-100">
+            <h5 class="mb-1">
+              Professor's Details
+            </h5>
+            <p class="mb-0 font-weight-normal text-sm">
+              {{enseignant.nom}}   {{enseignant.prenom}}            </p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3 ">
+            <a [routerLink]="['/enseignants/list']" class="btn bg-gradient-dark mb-0" >back</a>
+
+        </div>
+      </div>
+
+     
+
+      <!-- this is where the department name ends bbbbbbbbbbbbbbbbbbbbbbb-->
+      <br> 
+      
+      <div class="row">
+      
+          <div class="col-12 col-xl-6">
+            <div class="card card-plain h-100 ">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="col-md-8 d-flex align-items-center">
+                    <h6 class="mb-0 text-sm">Professor's Information</h6>
+        
+        
+        
+        
+                  </div>
+                  <div class="col-md-4 text-end">
+                    <a a [routerLink]="['/enseignants/update',enseignant.idEnseignant]">
+                      <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile"></i><span class="sr-only">Edit Profile</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">FullName:</strong> &nbsp; {{enseignant.nom}}   {{enseignant.prenom}}</li>
+                  <li class="list-group-item border-0 ps-0 text-sm" ><strong class="text-dark">Code: </strong> &nbsp;{{enseignant.codeEns}}</li>
+                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Role:</strong> &nbsp; {{enseignant.role}}</li>
+                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{enseignant.email}}</li>
+                </ul>
+              </div>
+            </div>
+          </div> 
+     
+
+          <div class="col-12 col-xl-6"> 
+            <div class="card card-plain h-100 ">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="col-md-8 d-flex align-items-center">
+                    <h6 class="mb-0 text-sm">Assign Professor to Department</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <form #f="ngForm">
+                  <select name="departement" [(ngModel)]="departement" #im="ngModel" placeholder="pick a departement" required class="form-select">
+                    <option *ngFor="let departement of list" [ngValue]="departement">
+                      {{ departement.nomDepart }}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger alert-dismissible text-white" *ngIf="im.invalid && im.touched">
+          
+                    <div *ngIf="im.hasError('required')">
+                    <span class="text-sm">choose a department to add</span>  
+                                            
+                    </div>
+      
+                                           
+                    </div>
+                  <div class="row">
+                   
+                    <div class="col-6">
+                        <button (click)="print()" type="button"
+                            class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0" [disabled]="f.invalid">save</button>
+                    </div>  
+                 </div>
+                </form> 
+              </div>
+            </div>
+
+
+
+          
+     
+
+
+              
+              
+    
+        </div>
+
+          <!-- inofmation about depatment-->
+
+      </div>
+  </div>

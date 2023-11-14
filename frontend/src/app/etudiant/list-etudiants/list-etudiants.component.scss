@@ -1,0 +1,26 @@
+.add-b {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: larger;
+    text-align: center;
+    font-weight: bolder;
+    color: #5BB25F;
+    transition: all 0.5s;
+}
+
+.add-b:hover {
+    color: white;
+    background-color: #5BB25F;
+}
+
+.edit:hover {
+    color: #5BB25F !important;
+    transition: all 0.5s;
+}
+
+.delete:hover {
+    color: #DE2768 !important;
+    cursor: pointer;
+    transition: all 0.5s;
+}

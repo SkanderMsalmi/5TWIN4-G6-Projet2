@@ -1,0 +1,141 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
+
+
+
+
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+
+
+            <div class="col-6 d-flex align-items-center">
+                <h5 class="mb-0">Modifier Universite</h5>
+            </div>
+            <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
+
+
+
+            <form role="form" #f="ngForm">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6  ">
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="name" placeholder="Nom"
+                                        [(ngModel)]="universite.nomUniv" class="form-control" required
+                                        pattern="[A-z0-9À-ž\s]{1,300}$" #n="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="n.invalid && n.touched">
+                                    <div *ngIf="n.hasError('required')">
+                                        Name is required
+                                    </div>
+
+                                    <div *ngIf="n.hasError('pattern')">
+                                        error pattern
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="mail" placeholder="E-mail "
+                                        [(ngModel)]="universite.mailUniv" class="form-control" required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #m="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="m.invalid && m.touched">
+                                    <div *ngIf="m.hasError('required')">
+                                        E-mail is required
+                                    </div>
+                                    <div *ngIf="m.hasError('pattern')">
+                                        error pattern
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="address" placeholder="Adresse"
+                                        [(ngModel)]="universite.addressUniv" class="form-control" required #a="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="a.invalid && a.touched">
+                                    <div *ngIf="a.hasError('required')">
+                                        Address is required
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            
+                            <div >
+                                <div class="col-md-4">
+                                    <label for="">Departements :</label>
+                                </div>
+                              
+                                <div class="col-md-8  mx-5">
+                                    <div *ngFor="let dep of deplist">
+                                        <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
+                                                (change)="onchange()" [(ngModel)]="dep.isselected"> <label
+                                                for="">{{dep.nomDepart}}</label></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                          
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="  d-flex   justify-content-end">
+                            <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  col-md-2 "
+                                [disabled]="f.invalid">Enregistrer</button>
+                            &nbsp;&nbsp;
+                            <button type="button" routerLink="/universites"
+                                class="btn btn-outline-primary    col-md-2">Annuler</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+
+
+
+
+        </div>
+
+
+
+
+    </div>

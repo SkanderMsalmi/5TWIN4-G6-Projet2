@@ -1,0 +1,94 @@
+
+
+
+
+<div class="row">
+
+
+  <div class="listEtudiant col-8">
+      <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+      
+            <div class="d-flex  input-search" >
+              <input class="form-control border p-2 "   placeholder="Entrer Nom d'etudiant" [(ngModel)]="filterText" aria-label="Search">
+              
+            </div>
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Nom</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Prenom</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Ajouter</th>
+                  <th class="text-secondary opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody>
+               
+          
+                <tr *ngFor="let e of tousEtudiant | filterEtudiant:filterText">
+                    <td class="text-center">
+                      <div class="d-flex px-2 py-1">
+                        
+                        <div class="d-flex flex-column justify-content-center text-center">
+                            <p class="text-xs font-weight-bold text-center mb-0">{{e.nomE}}  </p>
+                         
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <p class="text-xs font-weight-bold text-center mb-0">{{e.prenomE}}</p>
+                     
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-primary"  [disabled]=" checkiFInEquipe(e.idEtudiant)"  (click)="addMemberToTeam(e.idEtudiant)">+</button>
+                     
+                    </td>
+                    <!-- <td class="align-middle text-center text-sm">
+                      <button class="btn btn-warning btn-sm m-auto" [routerLink]="['/equipes/editEquipe',e.idEquipe]">Modifier</button>
+                    </td>
+                    <td class="align-middle text-center">
+                        <button class="btn btn-danger btn-sm m-auto" (click)="deleteEquipe(e)">Delete</button>
+                    </td> -->
+                 
+                  </tr>
+                
+                   
+               
+              </tbody>
+              
+            </table>
+           
+          </div>
+        </div>
+  </div>
+  
+  <div class="row bootstrap snippets bootdeys col-4">
+    <div class="container-widget p-3">
+        <div class="panel panel-info panel-widget">
+            <div class="panel-title text-center">
+              Membres d'equipe
+            </div>
+            <div class="panel-body p-3">
+              <ul class="basic-list image-list" *ngIf="equipe.etudiants.length > 0 " >
+                <li *ngFor="let et of equipe.etudiants" ><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="img" class="img" style="border-radius: 100%;">
+                  <div class="d-flex  align-items-center ">
+                  <div class="w-80"><p>{{et.nomE}} {{et.prenomE}}</p>
+                  <span class="desc">{{et.opt}}</span> </div>
+                  <div> <i (click)="deleteEtudiantFromEquipe(et,et.idEtudiant,idEquipe)" class="fa-solid fa-square-minus text-danger del" ></i>  </div>
+                  
+                </div>
+  
+             </li>
+  
+              </ul>
+              <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="equipe.etudiants.length == 0">
+                  <p>Equipe Vide</p>
+              </div>
+            </div>
+           
+        </div>
+    </div>  
+  </div>
+  
+  </div>
+  

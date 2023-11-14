@@ -1,0 +1,138 @@
+
+<div class="container-fluid px-2 px-md-4">
+  <div class="page-header min-height-300 border-radius-xl mt-4"
+      style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+      <span class="mask  bg-gradient-primary  opacity-6"></span>
+  </div>
+  <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+      <div class="card-header pb-0 p-3">
+          
+
+              <div class="col-6 d-flex align-items-center">
+                  <h4 class="mb-0" >Ajouter Contrat</h4>
+              </div>
+
+
+          <div class="p-4">
+<form class="container" #f="ngForm">
+  <div class="row">
+    <div class="col-md-3">
+        <div class="mb-4">
+          <label class="form-label">Date de debut du contrat:</label>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="input-group input-group-outline  mb-4">
+
+        <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
+          
+        
+        </div>
+        
+      
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <div class="mb-4">
+            <label class="form-label">Date de Fin du contrat:</label>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="input-group input-group-outline  mb-4">
+
+        <input type="date" class="form-control" id="DateFin" name="dateFinContrat"   [(ngModel)]="contrat.dateFinContrat" required #f="ngModel">
+        <div class="alert alert-danger" *ngIf="d2.invalid && d2.touched">this filed is required</div>
+            
+          
+          </div>
+          
+        
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+            <div class="mb-4">
+              <label class="form-label">Specialite :</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="input-group input-group-outline mb-4">
+
+              <select name="specialite" id="specialite"  [(ngModel)]="contrat.specialite" class="form-select" required #q1="ngModel">
+                <div class="alert alert-danger" *ngIf="q1.invalid && q1.touched">this filed is required</div>
+                <option value="IA">IA</option>
+                <option value="RESEAUX">RESEAUX</option>
+                <option value="CLOUD">CLOUD</option>
+                <option value="SECURITE">SECURITE</option>
+              
+              </select>
+              
+            </div>
+            
+          
+        </div>
+     </div>
+   
+
+
+    <fieldset class="form-control" id="radio" >
+        <label>Archive</label>
+        <div>
+          <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive">
+          <label for="name">Oui</label>
+        </div>
+        <div>
+          <input type="radio" [value]="false" id="false" name="radio"  [(ngModel)]="contrat.archive">
+          
+          <label for="name">Non</label>
+        </div>
+        </fieldset>
+    
+        <div class="row">
+          <div class="col-md-3">
+              <div class="mb-4">
+                <label class="form-label">Etudiant :</label>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="input-group input-group-outline mb-4">
+                <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.etudiant" class="form-control" required #d2="ngModel" >
+
+                
+        <div class="alert alert-danger" *ngIf="d2.invalid && d2.touched">this filed is required</div>
+                      
+                  <option *ngFor="let etudiant of all" [ngValue]="etudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
+                  
+                
+                </select>
+                
+              </div>
+              
+          </div>
+       </div>
+    
+    
+       <div class="row">
+        <div class="col-md-3">
+            <div class="mb-4">
+              <label class="form-label">Montant de Contrat :</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="input-group input-group-outline  mb-4">
+          <div class="alert alert-danger" *ngIf="d.invalid && d.touched">this filed is required</div>
+
+        <input type="text"  name="montantContrat" [(ngModel)]="contrat.montantContrat" class="form-control" required #d="ngModel" >
+                
+            </div>
+            
+        </div>
+     </div>
+    
+    <button type="submit" class="btn btn-sm btn-success" (click)="saveContrat()">save</button>
+</form>

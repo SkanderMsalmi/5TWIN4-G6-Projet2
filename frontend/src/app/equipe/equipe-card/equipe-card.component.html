@@ -1,0 +1,36 @@
+<div class="card-box bg-blue" style="padding: 0px 10px 40px; border-radius: 12px;">
+    <div class="inner">
+  <div >
+    <i class="fa-solid fa-trash" style="color: red;float: right;font-size: 20px;padding: 5px;" data-bs-toggle="modal" (click)="showModal=true" data-bs-target="#exampleModal"></i>
+    <!-- Modal -->
+<div class="modal fade myelement" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" [ngClass]="{'show':showModal}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Suppression Equipe</h5>
+        <p type="button"  data-bs-dismiss="modal" aria-label="Close" (click)="showModal =false" style="color:gray"><i class="fa-solid fa-xmark"></i></p>
+      </div>
+      <div class="modal-body">
+        <p style="color:gray">Vous etes sur que vous voulez supprimer cette equipe</p>
+      </div>
+      <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="showModal=false">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteEquipe()">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 style="margin-bottom: 0;"> {{equipe.nomEquipe}} </h3>
+  </div>
+        <p> {{equipe.niveau}} </p>
+    </div>
+    <div class="icon">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+    </div>
+    <div>
+      <button class="btn btn-warning " [routerLink]="['/equipes/editEquipe',equipe.idEquipe]">Modifier</button>
+
+    </div>
+    <a [routerLink]="['/equipes/',equipe.idEquipe,equipe.detailEquipe.idDetailEquipe]" class="card-box-footer ">  View More <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+

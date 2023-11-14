@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2 card my-4">
+        <div
+            class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 title">
+            <h4 class="text-white text-capitalize ps-3"> {{action}} a student</h4>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+
+                    <form #f="ngForm" class="container">
+                        <div class="form-group col-md-6">
+                            <label for="prenome">First name* </label>
+                            <input type="text" class="form-control" name="prenome" [(ngModel)]="etudiant.prenomE"
+                                id="prenome" placeholder="First name" required minlength="3" #n="ngModel"
+                                pattern="[a-zA-Z]{3,12}$">
+
+
+                            <div class="alert alert-primary alert-dismissible text-white" role="alert"
+                                *ngIf="n.invalid && n.touched">
+                                <div *ngIf="n.hasError('required')" class="text-sm">Name is required
+                                </div>
+                                <div *ngIf="n.hasError('minlength')" class="text-sm">Minimum length is 3 </div>
+                                <div *ngIf="n.hasError('pattern')" class="text-sm">Only alphabets are accepted</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="nome">Last name* </label>
+                            <input type="text" class="form-control" name="nome" [(ngModel)]="etudiant.nomE" id="nome"
+                                placeholder="Last name" required minlength="3" #n="ngModel" pattern="[a-zA-Z]{3,12}$">
+                            <div class="alert alert-primary alert-dismissible text-white"
+                                *ngIf="n.invalid && n.touched">
+                                <div *ngIf="n.hasError('required')" class="text-sm">Name is required</div>
+                                <div *ngIf="n.hasError('minlength')" class="text-sm">Minimum length is 3</div>
+                                <div *ngIf="n.hasError('pattern')" class="text-sm">Only alphabets are accepted</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="opt">Category* </label>
+                            <select class="form-control" id="opt" name="opt" [(ngModel)]="etudiant.opt" required
+                                #c="ngModel">
+                                <option>GAMIX</option>
+                                <option>SE</option>
+                                <option>SIM</option>
+                                <option>NIDS</option>
+                            </select>
+                            <div class="alert alert-primary alert-dismissible text-white text-sm"
+                                *ngIf="c.invalid && c.touched">Category is required</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="department">Department* </label>
+                            <select class="form-control" id="department" name="department"
+                                [(ngModel)]="etudiant.departement" required #c="ngModel">
+                                <option *ngFor="let d of listDep" [ngValue]="d">{{d.nomDepart}}</option>
+                            </select>
+                            <div class="alert alert-primary alert-dismissible text-white text-sm"
+                                *ngIf="c.invalid && c.touched">Department is required</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pdp">Profile image* </label>
+                            <input type="file" class="form-control" name="pdp" id="pdp" (change)="onFileUpload($event)">
+
+                        </div>
+                        <button type="submit" class="btn bg-gradient-primary mt-4 w-100" (click)="save()"
+                            [disabled]="f.invalid">{{action}}</button>
+                        <small class="text-muted text-sm ">Fields with "*" are required</small>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

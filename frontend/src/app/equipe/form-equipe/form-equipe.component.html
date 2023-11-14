@@ -1,0 +1,38 @@
+<div class="d-flex flex-column m-auto justify-content-center align-items-center mt-5 " >
+
+    <form #f="ngForm" class="w-50 border p-5 text-center" >
+        <h2>{{action}} Equipe</h2>
+        <div class="form-group col-md-6 m-auto">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control border p-2" placeholder="Nom d'equipe "   required="true" [(ngModel)]="equip.nomEquipe" #n="ngModel">
+            <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+                <div *ngIf="n.hasError('required')">
+                 Vous devez entrer votre nom d'equipe
+                </div> 
+             </div>
+        </div>
+      
+        
+        <div class="form-label mb-2 col-md-6 m-auto">
+            <label class="form-label" for="niveau">Niveau</label>
+            <select class="form-select border p-2" name="niveau" id="niveau"   [(ngModel)]="equip.niveau" required="true" #c="ngModel">
+                <option value="EXPERT">EXPERT</option>
+                <option value="SENIOR">SENIOR</option>
+                <option value="JUNIOR">JUNIOR</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="c.invalid && c.touched">Vous devez entrer votre nom</div>
+        </div>
+        <div class="form-group col-md-6 m-auto">
+            <label for="salle">Salle</label>
+            <input type="number" name="salle" class="form-control border p-2" placeholder="Salle" min="1"   required="true" [(ngModel)]="equip.detailEquipe.salle" #s="ngModel">
+            <div class="alert alert-danger" *ngIf="s.invalid && s.touched">vous devez entrer votre salle s'il vous plait !</div>
+        </div>
+        <div class="form-group col-md-6 m-auto">
+            <label for="thematique">Thematique</label>
+            <input type="text" name="thematique" class="form-control border p-2" placeholder="Thematique"  required="true" [(ngModel)]="equip.detailEquipe.thematique" #th="ngModel">
+            <div class="alert alert-danger" *ngIf="th.invalid && th.touched">Votre Thematique !</div>
+        </div>
+        
+        <button class="btn btn-success mt-3 p-3" (click)="saveEquip()" >{{action}}</button>
+    </form>
+    </div>

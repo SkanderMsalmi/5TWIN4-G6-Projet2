@@ -1,0 +1,82 @@
+<div class="container-fluid px-2 px-md-4">
+  <div class="page-header min-height-300 border-radius-xl mt-4"
+      style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+      <span class="mask  bg-gradient-primary  opacity-6"></span>
+  </div>
+  <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+      <div class="card-header pb-0 p-3">
+          
+          <div class="row">
+              <div class="col-3 d-flex align-items-center" >
+                <!--listlength feha moshkla alekher mehish intialized need to change it with an if-->
+                  <h6 class="mb-0">({{listlength}})  Departements</h6>
+              </div>
+              <div class="col-4">
+             <input type="text" name="c" [(ngModel)]="searchtext" class="form-control bg-gradient-light px-4" placeholder="Search">
+            </div>
+              <div class="col-5 text-end">
+                  <a [routerLink]="['/departements/new']" class="btn bg-gradient-dark mb-0" ><i
+                          class="material-icons text-sm">add</i>&nbsp;&nbsp;Add Department</a>
+              </div>
+          </div>
+      </div>
+      <div class="card-body p-3">
+          <div class="row">
+              <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Name</th>
+                        <th class=" text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bloc</th>
+
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
+
+                      </tr>
+                    </thead>
+                    <tbody  >
+                      <tr *ngFor="let dep of list | filter:searchtext">
+                          
+                        <td>
+                          <div class="d-flex px-2 py-1">
+
+                            <div class="d-flex flex-column justify-content-center">
+                              <a  [routerLink]="['/departements/detail',dep.idDepartement]"> <h6 class="mb-0 text-sm">{{dep.nomDepart}}</h6> </a>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0">{{dep.codeInterne}}</p>
+                      
+                        <td class="align-middle text-center" >
+                          <p  [ngStyle]="{'color':getColor(dep)}">{{dep.bloc}}</p>
+                        </td>
+                        <td class="align-middle">
+                          <a (click)="deleteDep(dep)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                              class="material-icons text-sm me-2">delete</i></a>
+                              <a [routerLink]="['/departements/update',dep.idDepartement]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                  class="material-icons text-sm me-2">edit</i></a>
+                              
+                        </td>
+                        <td class="align-middle">
+                          
+                                  <a [routerLink]="['/departements/detail',dep.idDepartement]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                    class="material-icons text-sm me-2">more_horiz</i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+               
+                  
+           </div>
+
+       </div>
+   </div>
+
+  
+
+</div>

@@ -1,0 +1,114 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
+
+
+
+
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+
+
+            <div class="col-6 d-flex align-items-center">
+                <h5 class="mb-0">Ajouter Universite</h5>
+            </div>
+            <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
+
+
+
+            <form role="form"  [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6  ">
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="name" placeholder="Nom"
+                                        [(ngModel)]="universite.nomUniv" class="form-control" 
+                                        formControlName="uniname" >
+                                        
+                                </div>
+                                <div *ngIf="submitted || f['uniname'].touched && f['uniname'].invalid" >
+                                    <div *ngIf="f['uniname'].errors && f['uniname'].errors['required']">Name is required</div>
+                                  </div>
+                                 
+                            </div>
+
+
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="mail" placeholder="E-mail "
+                                        [(ngModel)]="universite.mailUniv" class="form-control" 
+                                         formControlName="mail" >
+                                         
+                                </div>
+                                <div *ngIf="submitted || f['mail'].touched && f['mail'].invalid" >
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['required']">E-mail is required</div>
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['pattern']">error pattern </div>
+                                  </div>
+                                 
+                            </div>
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="address" placeholder="Adresse"
+                                        [(ngModel)]="universite.addressUniv" class="form-control"
+                                         formControlName="address"   >
+                                         
+                                </div>
+                                <div *ngIf="submitted || f['address'].touched && f['address'].invalid" >
+                                    <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required</div>
+                                  </div>
+                                
+                            </div>
+
+                        </div>
+
+                       
+
+
+                    </div>
+                    <div class="row">
+                        <div class="  d-flex   justify-content-end">
+                            <button  type="submit" class="btn  bg-gradient-primary  col-md-2 "
+                               [disabled]="reactiveForm.invalid" >Enregistrer</button>
+                            &nbsp;&nbsp;
+                            <button type="button" routerLink="/universites"
+                                class="btn btn-outline-primary    col-md-2">Annuler</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+
+
+
+
+        </div>
+
+
+
+
+    </div>

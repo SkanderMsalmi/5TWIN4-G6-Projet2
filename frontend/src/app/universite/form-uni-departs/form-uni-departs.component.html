@@ -1,0 +1,82 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
+
+
+
+
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+
+
+            <div class="col-6 d-flex align-items-center">
+                <h4 class="mb-0">Ajouter des departements</h4>
+            </div>
+            <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
+
+            <div class="p-4">
+
+                <form role="form">
+                    <div>
+                        <div *ngIf="deplist.length == 0">
+                             
+                            <div class="row">
+
+                                <div class="text-center">
+                                    <button (click)="assignUniDep()" [routerLink]="['/departements/new']" type="button"
+                                        class="btn btn-lg bg-gradient-primary btn-lg col-md-6 mt-4 mb-0">Ajouter departements</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div  >
+                            <div *ngFor="let dep of deplist">
+                                <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
+                                        (change)="onchange()" [(ngModel)]="dep.isselected"> <label
+                                        for="">{{dep.nomDepart}}</label></div>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="row" *ngIf="deplist.length != 0">
+
+                        <div class="text-center">
+                            <button (click)="assignUniDep()" type="button"
+                                class="btn btn-lg bg-gradient-primary btn-lg col-md-6 mt-4 mb-0">Ajouter</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+   
