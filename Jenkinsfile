@@ -32,7 +32,7 @@ pipeline {
             }
         }
 
-        stage('Docker') {
+        stage('DockerImage') {
             steps {
                 script {
                     def dockerImageTag = "kaddemimage:v${BUILD_NUMBER}"
@@ -41,12 +41,18 @@ pipeline {
             }
         }
 
-        stage('Dockerhub') {
+        stage('DockerHub') {
             steps {
 
                 sh "docker login -u adamchibani -p adam1999!"
                 sh "docker tag kaddemimage:v${BUILD_NUMBER} adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
                 sh "docker push adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
+            }
+        }
+        
+        stage('DockerCompose') {
+            steps {
+                sh 'docker compose up -d'
             }
         }
     }
