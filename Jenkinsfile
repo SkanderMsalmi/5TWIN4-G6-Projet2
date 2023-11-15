@@ -49,7 +49,7 @@ pipeline {
                 sh "docker push adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
             }
         }
-        
+
         stage('DockerCompose') {
             steps {
                 sh 'docker compose up -d'
