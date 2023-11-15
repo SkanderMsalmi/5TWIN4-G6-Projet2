@@ -14,21 +14,30 @@ pipeline {
             }
         }
 
+        stage('SONARQUBE') {
+          steps {
+            sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+          }
+        }
+
+        stage('Nexus') {
+            steps {
+                sh 'mvn deploy -DskipTests=true'
+            }
+        }
+
         stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
 
-        stage('SONARQUBE') {
-             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-            }
-        }
-
-        stage('Docker'){
+        stage('Docker') {
             steps {
-                sh 'docker build -t kaddemimage:v1 -f Dockerfile ./'
+                script {
+                    def dockerImageTag = "kaddemimage:v${BUILD_NUMBER}"
+                    sh "docker build -t ${dockerImageTag} -f Dockerfile ./"
+                }
             }
         }
 
@@ -36,12 +45,10 @@ pipeline {
             steps {
 
                 sh "docker login -u adamchibani -p adam1999!"
-                sh "docker tag kaddemimage:v1 adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
+                sh "docker tag kaddemimage:v${BUILD_NUMBER} adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
                 sh "docker push adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
             }
         }
-
-
     }
 
     post {
