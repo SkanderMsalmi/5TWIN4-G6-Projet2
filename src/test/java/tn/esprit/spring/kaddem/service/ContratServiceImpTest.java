@@ -33,7 +33,7 @@ public class ContratServiceImpTest {
 
     @Test
     public void testRetrieveAllContrats() {
-        List<Contrat> contrats = new ArrayList<>();
+        List<Contrat> contrats = null;
         when(contratRepository.findAll()).thenReturn(contrats);
 
         List<Contrat> result = contratService.retrieveAllContrats();
