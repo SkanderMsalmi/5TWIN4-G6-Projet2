@@ -20,13 +20,19 @@ pipeline {
             }
         }
 
+        stage('SONARQUBE') {
+             steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+            }
+        }
+
         stage('Docker'){
             steps {
                 sh 'docker build -t kaddemimage:v1 -f Dockerfile ./'
             }
         }
 
-        stage('dockerhub') {
+        stage('Dockerhub') {
             steps {
 
                 sh "docker login -u adamchibani -p adam1999!"
