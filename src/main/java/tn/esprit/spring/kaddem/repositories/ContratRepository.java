@@ -25,4 +25,5 @@ public Integer getnbContratsValides(@Param("startDate") Date startDate, @Param("
 
 public List<Contrat> findAll();
 public Contrat findByIdContrat(Integer idContrat);
+
 }

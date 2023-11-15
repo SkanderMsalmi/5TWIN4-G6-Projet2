@@ -55,7 +55,7 @@ public class ContratServiceImpTest {
         when(contratRepository.save(contrat)).thenReturn(contrat);
 
         Contrat result = contratService.addContrat(contrat);
-
+        System.out.printf("ddd: "+ result);
         assertEquals(contrat, result);
     }
     @Test
@@ -93,12 +93,16 @@ public class ContratServiceImpTest {
     @Test
     public void testRemoveContrat() {
         Integer contratIdToRemove = 1;
-        when(contratRepository.findById(contratIdToRemove)).thenReturn(java.util.Optional.ofNullable(new Contrat()));
+        Contrat contratToDelete = contratRepository.findByIdContrat(1);
+
+        when(contratRepository.findById(contratIdToRemove)).thenReturn(java.util.Optional.ofNullable(contratToDelete));
 
         contratService.removeContrat(contratIdToRemove);
 
-        verify(contratRepository).delete(new Contrat()); 
+        verify(contratRepository).delete(contratToDelete);
     }
+
+
 
 
 }
