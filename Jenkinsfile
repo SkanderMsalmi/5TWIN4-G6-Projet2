@@ -20,6 +20,21 @@ pipeline {
             }
         }
 
+        stage('Docker'){
+            steps {
+                sh 'docker build -t kaddemimage:v1 -f Dockerfile ./'
+            }
+        }
+
+        stage('dockerhub') {
+            steps {
+
+                sh "docker login -u adamchibani -p adam1999!"
+                sh "docker tag kaddemimage:v1 adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
+                sh "docker push adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage"
+            }
+        }
+
 
     }
 
