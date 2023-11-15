@@ -20,15 +20,15 @@ pipeline {
           }
         }
 
-        stage('Nexus') {
-            steps {
-                sh 'mvn deploy -DskipTests=true'
-            }
-        }
-
         stage('Test') {
             steps {
                 sh 'mvn test'
+            }
+        }
+
+        stage('Nexus') {
+            steps {
+                sh 'mvn deploy -DskipTests=true'
             }
         }
 
