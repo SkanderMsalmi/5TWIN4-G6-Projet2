@@ -20,6 +20,7 @@ public class Equipe implements Serializable{
 
     @JsonIgnore
     private Set<Etudiant> etudiants;
+    @JsonIgnore
     @OneToOne
     private DetailEquipe detailEquipe;
 
