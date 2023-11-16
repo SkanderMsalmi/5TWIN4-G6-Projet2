@@ -123,25 +123,18 @@ pipeline {
                     }
                 }
             }
+    }
 
-
-              }
 post {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
         success {
-                 emailext body: 'Your build was successful. Please check the artifacts!',
-                         subject: 'Build Successful',
-                         to: 'msalmi@example.com',
-                         mimeType: 'text/html'
-             }
-             failure {
-                 emailext body: 'Your build failed. Please check the console output for details.',
-                         subject: 'Build Failed',
-                         to: 'your.email@example.com',
-                         mimeType: 'text/html'
-             }
+                    echo 'Build and tests passed!'
+                }
+                failure {
+                    echo 'Build or tests failed!'
+                }
     }
 }
 
