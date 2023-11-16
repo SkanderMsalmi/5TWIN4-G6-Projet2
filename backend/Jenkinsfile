@@ -90,9 +90,9 @@ pipeline {
             stage('DockerHub') {
                     steps {
                         dir('backend'){
-                            sh "docker login -u skanderdocker10 -p skanderdocker12"
+                            sh "docker login -u skanderdocker10 -p skanderdocker12 "
                             sh "docker tag kaddemimage:v${BUILD_NUMBER} skandermsalmi/skandermsalmi-5twin4-g6-kaddem:kaddemimage"
-                            sh "docker push skandermsalmi/skandermsalmi-5twin4-g6-kaddem:kaddemimage"
+                            sh "docker push skanderdocker10/skandermsalmi-5twin4-g6-kaddem:kaddemimage"
                         }
                     }
                 }
