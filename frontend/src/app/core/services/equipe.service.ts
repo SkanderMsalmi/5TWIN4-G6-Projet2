@@ -8,31 +8,31 @@ import { HttpClient } from '@angular/common/http';
 export class EquipeService {
   public equipe : Equip|any;
  
-  public url = environment.url+"ControleurEquipe/";
+  public url = environment.url+"equipe/";
   public urldetailEquipe = "http://localhost:8089/SpringMVC/ControleurDetailEquipe/deleteDetailEquipe/";
   constructor(private http:HttpClient) {
     
   }
 
  getAllEquipes(){
-  return this.http.get<Equip[]>(this.url+"displayEquipes");
+  return this.http.get<Equip[]>(this.url+"retrieve-all-equipes");
  }
 
  getEquipeById(id:number){
-  return this.http.get<Equip>(this.url+"displayEquipe/"+id);
+  return this.http.get<Equip>(this.url+"retrieve-equipe/"+id);
  }
 
  addEquip(e:Equip){
   
-  return this.http.post(this.url+"addEquipe",e);
+  return this.http.post(this.url+"add-equipe",e);
  }
 
  updateEquip(e:Equip){
-  return this.http.put(this.url+"updateEquipe",e);
+  return this.http.put(this.url+"update-equipe",e);
  }
 
  deleteEquip(e:Equip){
-return this.http.delete<Equip>(this.url+"deleteEquipe/"+e.idEquipe);
+return this.http.delete<Equip>(this.url+"add-equipe/"+e.idEquipe);
  }
 
  checkName(name:string){

@@ -116,7 +116,13 @@ pipeline {
         //         }
         //     }
         // }
-
+      stage('DockerCompose') {
+                steps {
+                    dir('backend'){
+                        sh 'docker compose up -d'
+                    }
+                }
+            }
     }
 post {
         always {
