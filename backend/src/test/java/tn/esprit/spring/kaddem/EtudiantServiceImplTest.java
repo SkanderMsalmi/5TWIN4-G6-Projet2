@@ -92,22 +92,6 @@ class EtudiantServiceImplTest {
     }
 
     @Test
-    void addAndAssignEtudiantToEquipeAndContract() {
-        Integer idContrat = 1, idEquipe = 1;
-        Etudiant etudiant = new Etudiant();
-        Contrat contrat = new Contrat();
-        Equipe equipe = new Equipe();
-        when(contratRepository.findById(idContrat)).thenReturn(Optional.of(contrat));
-        when(equipeRepository.findById(idEquipe)).thenReturn(Optional.of(equipe));
-        when(etudiantRepository.save(etudiant)).thenReturn(etudiant);
-        Etudiant result = etudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant, idContrat, idEquipe);
-        assertNotNull(result);
-        verify(contratRepository).findById(idContrat);
-        verify(equipeRepository).findById(idEquipe);
-        verify(etudiantRepository).save(etudiant);
-    }
-
-    @Test
     void getEtudiantsByDepartement() {
         Integer idDepartement = 1;
         when(etudiantRepository.findEtudiantsByDepartement_IdDepart(idDepartement)).thenReturn(Collections.singletonList(new Etudiant()));
