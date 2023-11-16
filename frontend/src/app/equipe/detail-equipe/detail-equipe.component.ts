@@ -5,7 +5,7 @@ import { Equip } from 'src/app/core/model/equipe';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { DetailEquipeService } from 'src/app/core/services/detail-equipe.service';
 import { EquipeService } from 'src/app/core/services/equipe.service';
-import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
+import { EtudiantService } from 'src/app/core/services/etudiant.service';
 
 @Component({
   selector: 'app-detail-equipe',
@@ -64,15 +64,6 @@ export class DetailEquipeComponent implements OnInit {
       
   }
   
-  deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
-    
-    let i = this.equipe.etudiants.indexOf(e);
-    this.serviceEtudiant.unassignEtudiantFromEquipe(idEtudiant,idEquipe).subscribe(
-      ()=>{
-        this.equipe.etudiants.splice(i,1);
-      }
-    )
-   
-  }
+
   
 }
