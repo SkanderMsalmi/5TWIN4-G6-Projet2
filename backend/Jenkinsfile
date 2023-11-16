@@ -124,21 +124,41 @@ pipeline {
                 }
             }
     }
+      stage('Send Email Notification') {
+                  steps {
+                      script {
+                          def subject = "Build ${currentBuild.result}"
+                          def body = """
+                              <p>Your build was ${currentBuild.result}. Please check the artifacts.</p>
+                              <p>Details:</p>
+                              <ul>
+                                  <li>Build Number: ${env.BUILD_NUMBER}</li>
+                                  <li>Build URL: ${env.BUILD_URL}</li>
+                                  <li>Commit: ${env.GIT_COMMIT}</li>
+                              </ul>
+                          """
+
+                          emailext body: body,
+                                  subject: subject,
+                                  to: 'msalmi.skander@esprit.tn',
+                                  mimeType: 'text/html'
+
+                          // If the build has failed, update the result
+                          if (currentBuild.resultIsBetterOrEqualTo('FAILURE')) {
+                              currentBuild.result = 'FAILURE'
+                          }
+                      }
+                  }
+              }
 post {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
-          success {
-                    emailext body: 'Your build was successful. Please check the artifacts!',
-                            subject: 'Build Successful',
-                            to: 'msalmi.skander@esprit.tn',
-                            mimeType: 'text/html'
+        success {
+                    echo 'Build and tests passed!'
                 }
                 failure {
-                    emailext body: 'Your build failed. Please check the console output for details.',
-                            subject: 'Build Failed',
-                            to: 'msalmi.skander@esprit.tn',
-                            mimeType: 'text/html'
+                    echo 'Build or tests failed!'
                 }
     }
 }
