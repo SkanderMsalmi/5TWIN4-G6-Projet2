@@ -128,11 +128,17 @@ post {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
-        success {
-                    echo 'Build and tests passed!'
+          success {
+                    emailext body: 'Your build was successful. Please check the artifacts!',
+                            subject: 'Build Successful',
+                            to: 'msalmi.skander@esprit.tn',
+                            mimeType: 'text/html'
                 }
                 failure {
-                    echo 'Build or tests failed!'
+                    emailext body: 'Your build failed. Please check the console output for details.',
+                            subject: 'Build Failed',
+                            to: 'msalmi.skander@esprit.tn',
+                            mimeType: 'text/html'
                 }
     }
 }
