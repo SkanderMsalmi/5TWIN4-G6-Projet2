@@ -56,7 +56,6 @@ export class AjoutEquipeComponent implements OnInit {
       salle: new FormControl('',[Validators.required,Validators.min(1)]),
       thematique : new FormControl('',[Validators.required])
     });
-      this.checkName();
 
 
   }
@@ -78,43 +77,10 @@ export class AjoutEquipeComponent implements OnInit {
     )
     
   }
-   validatorNomEquipe(formControl:AbstractControl):{[s:string]:boolean} {
-     if(this.equipeService.checkName(formControl.value)){
-      return {exists:true}
-     }else{
-      return {};
-     }
-  }
 
 
-  public checkName(){
 
-      this.nom?.valueChanges.pipe(
-        debounceTime(500),
-        tap(name => {
-          if(name.length != 0 && this.nom?.invalid){
-            
-            this.nom.markAsPending();
-          }else{
-            this.nom?.setErrors({'invalid':true});
-          }
-        })
-      ).subscribe(name =>{
-        this.equipeService.checkName(name).subscribe((response)=>{
-          if(response == true){
-            this.nom?.markAsPending({onlySelf:false});
-            this.nom?.setErrors({notUnique:true});
-           
-            
-                      
-          }else{
-            this.nom?.markAsPending({onlySelf:false});
-            this.nom?.setErrors(null);
-            this.nameExist=false;
-          }
-        })
-      })
-    }
+ 
    
 
 }

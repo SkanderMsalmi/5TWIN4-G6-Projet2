@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   Equipeservice:
-    image: skandermsalmi/skandermsalmi-5twin4-g6-kaddem:kaddemimage
+    image: skanderdocker10/skandermsalmi-5twin4-g6-kaddem:kaddemimage
     restart: always
     depends_on:
       - mysql

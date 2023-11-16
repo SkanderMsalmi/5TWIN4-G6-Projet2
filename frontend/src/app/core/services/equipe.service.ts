@@ -35,7 +35,5 @@ export class EquipeService {
 return this.http.delete<Equip>(this.url+"add-equipe/"+e.idEquipe);
  }
 
- checkName(name:string){
-  return this.http.get<boolean>(this.url+"checkName/"+name);
- }
+
 }
