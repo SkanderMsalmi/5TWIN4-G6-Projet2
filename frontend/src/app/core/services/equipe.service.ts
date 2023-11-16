@@ -9,7 +9,7 @@ export class EquipeService {
   public equipe : Equip|any;
  
   public url = environment.url+"equipe/";
-  public urldetailEquipe = "http://localhost:8089/SpringMVC/ControleurDetailEquipe/deleteDetailEquipe/";
+
   constructor(private http:HttpClient) {
     
   }
@@ -32,7 +32,7 @@ export class EquipeService {
  }
 
  deleteEquip(e:Equip){
-return this.http.delete<Equip>(this.url+"add-equipe/"+e.idEquipe);
+return this.http.delete<Equip>(this.url+"remove-equipe/"+e.idEquipe);
  }
 
 

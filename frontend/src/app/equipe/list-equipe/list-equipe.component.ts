@@ -15,7 +15,7 @@ export class ListEquipeComponent implements OnInit {
   public niveau:Niveau;
   public  view :string ="";
   public filterText :string ="";
-  public controlleurUrl:string ="ControleurEquipe/";
+  public controlleurUrl:string ="equipe/";
   public showModal:boolean=false;
  
 
@@ -24,7 +24,7 @@ export class ListEquipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.equipeService.getAll(Equip,this.controlleurUrl+"displayEquipes").subscribe(
+    this.equipeService.getAll(Equip,this.controlleurUrl+"retrieve-all-equipes").subscribe(
       (response:Equip[])=>{
         this.all = response;
         this.route.params.subscribe(
@@ -50,7 +50,7 @@ export class ListEquipeComponent implements OnInit {
   deleteEquipe(e:Equip){
     
       let i = this.list.indexOf(e);
-      this.equipeService.delete(e,this.controlleurUrl+"deleteEquipe/"+e.idEquipe).subscribe(
+      this.equipeService.delete(e,this.controlleurUrl+"remove-equipe/"+e.idEquipe).subscribe(
         ()=>{
           this.list.splice(i,1);
           this.toastr.warning("L'equipe "+e.nomEquipe +' supprimé avec succés','Suppression');

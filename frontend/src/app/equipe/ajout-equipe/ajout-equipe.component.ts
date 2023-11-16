@@ -51,11 +51,12 @@ export class AjoutEquipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nomEquipe: new FormControl('',[Validators.required]),
+      nom: new FormControl('',[Validators.required]),
       niveau : new FormControl('',[Validators.required]),
       salle: new FormControl('',[Validators.required,Validators.min(1)]),
       thematique : new FormControl('',[Validators.required])
     });
+     
 
 
   }
@@ -63,9 +64,12 @@ export class AjoutEquipeComponent implements OnInit {
   public ajoutEquipe():void{
     if(this.form.valid== true){
     this.equip = new Equip({
-      nomEquipe:this.form.get('nomEquipe')?.value,
+      nomEquipe:this.form.get('nom')?.value,
       niveau:this.form.get('niveau')?.value,
- 
+      detailEquipe:{
+        salle:this.form.get('salle')?.value,
+        thematique:this.form.get('thematique')?.value
+      }
 
     });
     }
@@ -74,7 +78,7 @@ export class AjoutEquipeComponent implements OnInit {
     )
     
   }
-
+  
 
 
  
