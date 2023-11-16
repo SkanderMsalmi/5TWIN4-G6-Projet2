@@ -139,7 +139,7 @@ pipeline {
                           """
                           emailext body: body,
                                   subject: subject,
-                                  to: 'msalmi.skander@esprit.tn',
+                                  to: 'msalmiskander@gmail.com',
                                   mimeType: 'text/html'
 
 
