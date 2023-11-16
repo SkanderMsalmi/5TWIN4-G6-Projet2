@@ -72,7 +72,7 @@ pipeline {
           dir('backend') {
 
 
-                sh 'mvn deploy -X -DskipTests=true'
+                sh 'mvn deploy -DskipTests=true'
           }
 
             }
@@ -82,8 +82,9 @@ pipeline {
                 script {
                 dir('frontend'){
                     def dockerImageTag = "kaddemimage:v${BUILD_NUMBER}"
-                    sh "docker build -t ${dockerImageTag} -f Dockerfile "}
-                }
+                    sh "docker build -t ${dockerImageTag} -f Dockerfile ./"
+                    }
+                        }
             }
         }
             stage('DockerHub') {
