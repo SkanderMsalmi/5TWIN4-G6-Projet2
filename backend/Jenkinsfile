@@ -80,8 +80,9 @@ pipeline {
          stage('Build Backend Docker Image') {
             steps {
                 script {
+                dir('frontend'){
                     def dockerImageTag = "kaddemimage:v${BUILD_NUMBER}"
-                    sh "docker build -t ${dockerImageTag} -f Dockerfile ./backend"
+                    sh "docker build -t ${dockerImageTag} -f Dockerfile "}
                 }
             }
         }
