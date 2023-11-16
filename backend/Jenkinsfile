@@ -137,7 +137,6 @@ pipeline {
                                   <li>Commit: ${env.GIT_COMMIT}</li>
                               </ul>
                           """
-
                           emailext body: body,
                                   subject: subject,
                                   to: 'msalmi.skander@esprit.tn',
