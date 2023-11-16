@@ -123,8 +123,8 @@ pipeline {
                     }
                 }
             }
-    }
-      stage('Send Email Notification') {
+
+      stage('Mailing') {
                   steps {
                       script {
                           def subject = "Build ${currentBuild.result}"
