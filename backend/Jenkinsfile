@@ -143,12 +143,13 @@ pipeline {
                                   to: 'msalmi.skander@esprit.tn',
                                   mimeType: 'text/html'
 
-                          // If the build has failed, update the result
+
                           if (currentBuild.resultIsBetterOrEqualTo('FAILURE')) {
                               currentBuild.result = 'FAILURE'
                           }
                       }
                   }
+              }
               }
 post {
         always {
