@@ -136,7 +136,7 @@ post {
                                         <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
                                 </body>
                             </html>''',
-                    to:'skanderaguero@gmail.com',
+                    to:'msalmiskander@gmail.com',
                     from: 'jenkins@example.com',
                     replyTo: 'jenkins@example.com',
                     mimeType:'text/html'
