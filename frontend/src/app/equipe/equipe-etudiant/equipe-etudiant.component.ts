@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { EquipeService } from 'src/app/core/services/equipe.service';
-import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
+import { EtudiantService } from 'src/app/core/services/etudiant.service';
 
 @Component({
   selector: 'app-equipe-etudiant',
@@ -35,21 +35,13 @@ this.equipe.etudiants =[];
       }
     )
     this.serviceEtudiant.getAllEtudiants().subscribe(
-      (reponse)=>{ this.tousEtudiant=reponse;
+      (reponse:any)=>{ this.tousEtudiant=reponse;
         
   }
     )
 
   }
-  addMemberToTeam(idEtudiant:number){
-    this.serviceEtudiant.assignEtudiantToEquipe(this.equipe,idEtudiant,this.idEquipe).subscribe(
-     ()=>{
-      this.ngOnInit();
-      
-     } 
-    );
-  
-  }
+
   public checkiFInEquipe(idEtudiant:number):boolean{
     
     if(this.equipe.etudiants.find((e)=>e.idEtudiant==idEtudiant)){
@@ -60,15 +52,6 @@ this.equipe.etudiants =[];
       return false;
   }}
 
-  deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
-    
-    let i = this.equipe.etudiants.indexOf(e);
-    this.serviceEtudiant.unassignEtudiantFromEquipe(idEtudiant,idEquipe).subscribe(
-      ()=>{
-        this.equipe.etudiants.splice(i,1);
-      }
-    )
-   
-  }
+
 
 }
