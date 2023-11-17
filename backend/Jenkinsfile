@@ -127,7 +127,7 @@ pipeline {
 
 post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            
             emailtext {
                 subject: "Pipeline Status: ${currentBuild.result}" ,
                 body: '''<html>
