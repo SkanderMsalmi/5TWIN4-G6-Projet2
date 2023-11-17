@@ -1,0 +1,140 @@
+pipeline {
+    agent any
+
+
+
+    stages {
+        stage('GIT') {
+            steps {
+                // Get some code from a GitHub repository
+                echo 'Pulling...'
+                git branch : 'SkanderMsalmi-5TWIN4-G6',
+                url : 'https://github.com/SkanderMsalmi/5TWIN4-G6-Projet2.git'
+            }
+            // post {
+            //     // If Maven was able to run the tests, even if some of the test
+            //     // failed, record the test results and archive the jar file.
+            //     success {
+            //         junit '**/target/surefire-reports/TEST-*.xml'
+            //         archiveArtifacts 'target/*.jar'
+            //     }
+            // }
+        }
+        stage('MAVEN CLEAN'){
+            steps{
+           dir('backend') {
+
+
+                sh 'mvn clean '
+           }
+
+            }
+        }
+        stage('MAVEN BUILD'){
+            steps{
+
+           dir('backend') {
+
+
+                sh 'mvn  install '
+           }
+
+
+            }
+        }
+        stage('SONARQUBE'){
+            steps{
+
+          dir('backend') {
+
+
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip-true';
+          }
+            }
+
+
+         }
+        stage('MOCKITO') {
+
+            steps{
+
+          dir('backend') {
+
+
+                sh 'mvn test'
+          }
+
+            }
+        }
+            stage('Nexus') {
+            steps {
+
+          dir('backend') {
+
+
+                sh 'mvn deploy -DskipTests=true'
+          }
+
+            }
+        }
+         stage('Build Backend Docker Image') {
+            steps {
+                script {
+                dir('backend'){
+                    def dockerImageTag = "kaddemimage:v${BUILD_NUMBER}"
+                    sh "docker build -t ${dockerImageTag} -f Dockerfile ./"
+                    }
+                        }
+            }
+        }
+            stage('DockerHub') {
+                    steps {
+                        dir('backend'){
+                            sh "docker login -u skanderdocker10 -p skanderdocker12 "
+                            sh "docker tag kaddemimage:v${BUILD_NUMBER} skanderdocker10/skandermsalmi-5twin4-g6-kaddem:kaddemimage"
+                            sh "docker push skanderdocker10/skandermsalmi-5twin4-g6-kaddem:kaddemimage"
+                        }
+                    }
+                }
+        // stage('Build Frontend') {
+        //     steps {
+        //         dir('frontend') {
+        //             script {
+
+        //                 sh 'npm install'
+        //                 sh 'npm run build'
+        //             }
+        //         }
+        //     }
+        // }
+
+        // stage('Build Frontend Docker Image') {
+        //     steps {
+        //         script {
+
+        //             sh 'docker build -t your-frontend-image ./frontend'
+        //         }
+        //     }
+        // }
+      stage('DockerCompose') {
+                steps {
+                    dir('backend'){
+                        sh 'docker compose up -d'
+                    }
+                }
+            }
+    }
+
+post {
+        always {
+            junit '**/target/surefire-reports/*.xml'
+        }
+        success {
+                    echo 'Build and tests passed!'
+                }
+                failure {
+                    echo 'Build or tests failed!'
+                }
+    }
+}
+
