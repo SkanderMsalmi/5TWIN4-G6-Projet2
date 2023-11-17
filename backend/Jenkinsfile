@@ -11,14 +11,7 @@ pipeline {
                 git branch : 'SkanderMsalmi-5TWIN4-G6',
                 url : 'https://github.com/SkanderMsalmi/5TWIN4-G6-Projet2.git'
             }
-            // post {
-            //     // If Maven was able to run the tests, even if some of the test
-            //     // failed, record the test results and archive the jar file.
-            //     success {
-            //         junit '**/target/surefire-reports/TEST-*.xml'
-            //         archiveArtifacts 'target/*.jar'
-            //     }
-            // }
+
         }
         stage('MAVEN CLEAN'){
             steps{
