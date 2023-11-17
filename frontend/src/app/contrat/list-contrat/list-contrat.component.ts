@@ -14,6 +14,7 @@ import { ClientRequest } from 'http';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
 import { ToastrService } from 'ngx-toastr';
+import { error } from 'console';
 @Component({
   selector: 'app-list-contrat',
   templateUrl: './list-contrat.component.html',
@@ -36,8 +37,10 @@ c:contrat;
     this.contratservice.getAllContrat().subscribe((response:contrat[])=>{
       this.all = response
       },
-      ()=>{console.log("error")},
-            ()=>{console.log("complete")});}
+      (error)=>{console.log("error",error)},
+            ()=>{console.log("complete")});
+          
+}
     
       
     delete(c:contrat){

@@ -6,17 +6,17 @@ import { Departement } from '../model/departement';
   providedIn: 'root'
 })
 export class DepartementService {
-  public url=environment.url+'controllerDepartement/';
+  public url=environment.url+'departement/';
 
   constructor(private http: HttpClient) { }
   getAllDepartement(){
-    return this.http.get<Departement[]>(this.url+'DisplayDepartements')
+    return this.http.get<Departement[]>(this.url+'retrieve-all-departements')
   }
 
   addDeprement(d:Departement){
     console.log("we are in service");
 
-    return this.http.post(this.url+'AddDepartement/',d)
+    return this.http.post(this.url+'add-departement/',d)
     
   }
 

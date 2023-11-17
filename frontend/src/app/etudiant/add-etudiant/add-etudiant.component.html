@@ -56,11 +56,7 @@
                             <div class="alert alert-primary alert-dismissible text-white text-sm"
                                 *ngIf="c.invalid && c.touched">Department is required</div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="pdp">Profile image* </label>
-                            <input type="file" class="form-control" name="pdp" id="pdp" (change)="onFileUpload($event)">
-
-                        </div>
+                     
                         <button type="submit" class="btn bg-gradient-primary mt-4 w-100" (click)="save()"
                             [disabled]="f.invalid">{{action}}</button>
                         <small class="text-muted text-sm ">Fields with "*" are required</small>

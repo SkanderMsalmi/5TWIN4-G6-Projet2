@@ -9,25 +9,25 @@ import { Etudiant } from '../model/etudiant';
 })
 export class ContaratService {
   List:contrat[];
-  public url=environment.url+'ControleurContrat/';
-public url2=environment.url+'ControleurEtudiant/';
+  public url=environment.url+'contrat/';
+public url2=environment.url+'etudiant/';
   constructor(private http:HttpClient){}
   getAllContrat(){
-    return this.http.get<contrat[]>(this.url+"displayContrats");
+    return this.http.get<contrat[]>(this.url+"retrieve-all-contrats");
      }
   addContrat(c:contrat){
-       return this.http.post(this.url+"addContrat",c)
+       return this.http.post(this.url+"add-contrat",c)
      }
   deleteContrat(id:number){
-   return this.http.delete(this.url+"deleteContrat/"+id)
+   return this.http.delete(this.url+"remove-contrat/"+id)
    }
   updateContrat(c:contrat){
-     return this.http.put(this.url+"updateContrat/",c)
+     return this.http.put(this.url+"update-contrat/",c)
    }
   getContratByID(id:number){
-     return this.http.get<contrat>(this.url+"displayContrat/"+id)
+     return this.http.get<contrat>(this.url+"retrieve-contrat/"+id)
    }
    getidNomPrenomEtudiant(){
-    return this.http.get<Etudiant[]>(this.url2+"displayStudents")
+    return this.http.get<Etudiant[]>(this.url2+"retrieve-all-etudiants")
    }
 }

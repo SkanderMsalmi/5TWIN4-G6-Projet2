@@ -43,7 +43,6 @@
                         <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Etudiant</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >date debut</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">date fin</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">specialité</th>
@@ -56,14 +55,8 @@
               </thead>
               <tbody *ngFor="let contrat of all | orderBy: key: reverse">
                
-               <tr *ngIf="contrat.specialite==spec || spec==null" >
-                <td class="text-center" > 
-                  <div class="d-flex px-2 py-1" >
-                    <div class="d-flex flex-column justify-content-center">
-                        <p class="text-xs font-weight-bold mb-0">{{contrat.etudiant.nomE}} {{contrat.etudiant.prenomE}}  </p>
-                    </div>
-                  </div>
-                </td>
+                <tr *ngIf="(contrat.specialite == spec || spec == null) && (dateD == null || dateF == null || (dateD <= contrat.dateDebutContrat && dateF >= contrat.dateFinContrat))">
+          
                     <td class="text-center" > 
                       <div class="d-flex px-2 py-1" >
                         <div class="d-flex flex-column justify-content-center">

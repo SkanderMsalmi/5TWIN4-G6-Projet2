@@ -44,7 +44,7 @@ export class AddEtudiantComponent implements OnInit {
     if (    this.route.snapshot.params["id"]    )
     this.es.update(this.etudiant).subscribe(()=> {this.toastr.success("L'etudiant "+this.etudiant.nomE +' modifie avec succés','Success');this.router.navigate(['/etudiants'])});
     else
-    this.es.addEtudiant(fd).subscribe(()=> {this.toastr.success("L'etudiant "+this.etudiant.nomE +' ajoutee avec succés','Success');this.router.navigate(['/etudiants'])})
+    this.es.addEtudiant(this.etudiant).subscribe(()=> {this.toastr.success("L'etudiant "+this.etudiant.nomE +' ajoutee avec succés','Success');this.router.navigate(['/etudiants'])})
   }
   prepareFormData(e:Etudiant):FormData{
     let formData = new FormData;

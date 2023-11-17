@@ -9,34 +9,34 @@ import { Equip } from '../model/equipe';
 })
 export class EtudiantService {
   public etudiants : Etudiant[];
-  public url = environment.url+"ControleurEtudiant/";
+  public url = environment.url+"etudiant/";
   constructor(private http:HttpClient) { }
 
   getAllEtudiants(){
-    return this.http.get<Etudiant[]>(this.url+"displayStudents");
+    return this.http.get<Etudiant[]>(this.url+"retrieve-all-etudiants");
   }
 
   getEtudiantById(id:number){
-    return this.http.get<Etudiant>(this.url+"displayStudent/"+id)
+    return this.http.get<Etudiant>(this.url+"retrieve-etudiant/"+id)
   }
 
   addEtudiant(e:Etudiant){
-    return this.http.post<Etudiant>(this.url+"addStudent",e);
+    return this.http.post<Etudiant>(this.url+"add-etudiant",e);
   }
 
   updateEtudiant(e:Etudiant){
-    return this.http.put<Etudiant>(this.url+"updateStudent",e)
+    return this.http.put<Etudiant>(this.url+"update-etudiant",e)
   }
 
   deleteEtudiant(e:Etudiant){
-    return this.http.delete<Etudiant>(this.url+"deleteStudent/"+e.idEtudiant);
+    return this.http.delete<Etudiant>(this.url+"remove-etudiant/"+e.idEtudiant);
   }
 
   assignEtudiantToDepartement(e:Etudiant,idDepartement:number){
-    return this.http.put<Etudiant>(this.url+"addAndAssignEtudiantToEquipeAndContract/"+e.idEtudiant+"/"+idDepartement,e)
+    return this.http.put<Etudiant>(this.url+"affecter-etudiant-departement/"+e.idEtudiant+"/"+idDepartement,e)
   }
   addAndAssignEtudiantToEquipeAndContract(e:Etudiant,idDepartement:number,idContrat:number){
-    return this.http.put<Etudiant>(this.url+"addAndAssignEtudiantToEquipeAndContract/"+e.idEtudiant+"/"+idContrat,e)
+    return this.http.put<Etudiant>(this.url+"add-assign-Etudiant/"+e.idEtudiant+"/"+idContrat,e)
   }
   assignEtudiantToEquipe( e:Equip,idEtudiant:number,idEquipe:number){
     return this.http.post<Etudiant>(this.url+"assignEtudiantToEquipe/"+idEtudiant+"/"+idEquipe,e)

@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  Equipeservice:
+  Contratservice:
     image: adamchibani/adamchibani-5twin4-g6-kaddem:kaddemimage
     restart: always
     depends_on:
