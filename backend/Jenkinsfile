@@ -127,9 +127,12 @@ pipeline {
 
 post {
         always {
+            junit '**/target/surefire-reports/*.xml'
             emailext subject: "Your Build - ${currentBuild.currentResult}", 
                   body: 'The build status: ${currentBuild.currentResult}.',
-                  to: 'msalmiskander@gmail.com'
+                  to: 'msalmiskander@gmail.com', from: 'jenkins@example.com',
+              replyTo: 'jenkins@example.com',
+              mimeType: 'text/html'
 }
      
     }
