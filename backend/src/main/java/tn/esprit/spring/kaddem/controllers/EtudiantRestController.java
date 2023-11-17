@@ -8,6 +8,7 @@ import tn.esprit.spring.kaddem.services.IEtudiantService;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/etudiant")

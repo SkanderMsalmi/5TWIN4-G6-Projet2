@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EtudiantService {
-  public url=environment.url+'ControleurEtudiant/'
+  public url=environment.url+'etudiant/'
   public list: Etudiant[] =  []
   constructor(private http:HttpClient) { }
 
   getAllEtudiants(){
     console.log(this.url+'displayStudents');
-    return this.http.get<Etudiant[]>(this.url+'displayStudents');
+    return this.http.get<Etudiant[]>(this.url+'retrieve-all-etudiants');
   }
   addEtudiant(p:FormData){
     return this.http.post(this.url+'addStudent',p);

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:8089/SpringMVC/'
+  url:'http://192.168.56.10:8089/kaddem/'
 };
 
 /*
